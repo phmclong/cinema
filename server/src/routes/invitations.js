@@ -26,6 +26,8 @@ const createMailOptions = (data) => {
   };
 };
 
+//hi
+
 // Send Invitation Emails
 router.post('/invitations', auth.simple, async (req, res) => {
   const invitations = req.body;
