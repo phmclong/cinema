@@ -8,6 +8,7 @@ const router = new express.Router();
 
 // Create a movie
 router.post('/movies', auth.enhance, async (req, res) => {
+  // console.log(req.body);
   const movie = new Movie(req.body);
   try {
     await movie.save();
@@ -24,16 +25,20 @@ router.post(
   async (req, res, next) => {
     const url = `${req.protocol}://${req.get('host')}`;
     const { file } = req;
+    // console.log("(+) path:" , req.file.path);
+    // const imageUrl = req.file.path;
     const movieId = req.params.id;
     try {
       if (!file) {
+      // if (!imageUrl) {
         const error = new Error('Please upload a file');
-        error.httpStatusCode = 400;
+        error.httpStatusCode = 422;
         return next(error);
       }
       const movie = await Movie.findById(movieId);
       if (!movie) return res.sendStatus(404);
       movie.image = `${url}/${file.path}`;
+      // movie.image = imageUrl;
       await movie.save();
       res.send({ movie, file });
     } catch (e) {
@@ -55,10 +60,10 @@ router.get('/movies', async (req, res) => {
 
 // Get movie by id
 router.get('/movies/:id', async (req, res) => {
-  const _id = req.params.id;
+  const movieId = req.params.id;
 
   try {
-    const movie = await Movie.findById(_id);
+    const movie = await Movie.findById(movieId);
     if (!movie) return res.sendStatus(404);
     return res.send(movie);
   } catch (e) {

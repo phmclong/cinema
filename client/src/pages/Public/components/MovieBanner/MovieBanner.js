@@ -13,6 +13,7 @@ import { Link } from 'react-router-dom';
 import ArrowRightAlt from '@material-ui/icons/ArrowRightAlt';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
 import styles from './styles';
+import regexPath from '../../../../utils/regexPath';
 
 const useStyles = makeStyles(styles);
 
@@ -29,6 +30,9 @@ function MovieBanner(props) {
   const { movie, fullDescription } = props;
   const classes = useStyles(props);
   if (!movie) return null;
+  // console.log("(+) MovieBanner", movie.image)
+  // console.log("1");
+  var newImageUrl = regexPath(movie.image);
 
   return (
     <div className={classes.movieHero}>
@@ -83,9 +87,11 @@ function MovieBanner(props) {
       <div
         className={classes.blurBackground}
         style={{
-          backgroundImage: `url(${movie.image})`
+          backgroundImage: `url(${newImageUrl})`
+          // backgroundImage: `url("http://localhost:8080/uploads/movies/1655455001868-joker-2019-15702714739951087496844.jpg")`
         }}
       />
+  
       <div className={classes.movieActions}>
         {fullDescription ? (
           <Link to={`booking/${movie._id}`} style={{ textDecoration: 'none' }}>

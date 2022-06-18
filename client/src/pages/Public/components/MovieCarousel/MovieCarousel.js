@@ -63,6 +63,7 @@ function MovieCarousel({ carouselClass, movies = [], title, to = null }) {
     ]
   };
   if (!movies.length) return null;
+
   return (
     <div className={carouselClass}>
       <div className={classes.container}>

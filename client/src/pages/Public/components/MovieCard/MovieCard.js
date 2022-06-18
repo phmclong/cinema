@@ -7,6 +7,11 @@ import { Link } from 'react-router-dom';
 
 const MovieCard = props => {
   const { classes, movie } = props;
+  console.log("(+) MovieCard", movie.image);
+
+  // function regexPath(string) {
+  //   return string.replace(/\\/g, '')
+  // }
 
   return (
     <Link to={`movie/${movie._id}`} style={{ textDecoration: 'none' }}>
@@ -14,7 +19,7 @@ const MovieCard = props => {
         <header
           className={classes.header}
           style={{
-            backgroundImage: `url(${movie.image})`
+            backgroundImage: `url("1")`
           }}>
           <Typography className={classes.h4} variant="h4" color="inherit">
             {movie.genre}

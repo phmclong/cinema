@@ -35,7 +35,7 @@ class HomePage extends Component {
         this.props.getMovieSuggestion(this.props.user.username);
     }
   }
-
+  
   render() {
     const {
       classes,
@@ -44,6 +44,7 @@ class HomePage extends Component {
       nowShowing,
       suggested
     } = this.props;
+    // console.log(this.props);
     return (
       <Fragment>
         <MovieBanner movie={randomMovie} height="85vh" />

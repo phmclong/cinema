@@ -7,10 +7,12 @@ import styles from './styles';
 // import CaledarIcon from '@material-ui/icons/CalendarToday';
 import { textTruncate } from '../../../../utils';
 import { Link } from 'react-router-dom';
+import regexPath from '../../../../utils/regexPath';
 
 const MovieCard = props => {
   const { classes, movie } = props;
-
+  console.log("(+) MovieCard", movie.image);
+  var newImageUrl = regexPath(movie.image)
   return (
     <Link to={`/movie/${movie._id}`} style={{ textDecoration: 'none' }}>
       <Paper className={classes.movieCard} elevation={20}>
@@ -65,7 +67,9 @@ const MovieCard = props => {
         <div
           className={classes.blurBackground}
           style={{
-            backgroundImage: `url(${movie.image})`
+            backgroundImage: `url(${newImageUrl})`
+          // <img className={classes.header} src="http://localhost:8080/uploads/movies/1655283277845-momo-upload-api-220309092345-637824146254326258.jpg"/>
+            // backgroundImage: `url("http://localhost:8080/uploads/movies/1655283277845-momo-upload-api-220309092345-637824146254326258.jpg")`
           }}
         />
       </Paper>
