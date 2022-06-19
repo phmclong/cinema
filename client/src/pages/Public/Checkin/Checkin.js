@@ -12,6 +12,8 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
+const url = 'https://cinema-sheon.herokuapp.com';
+
 function Checkin(props) {
   const reservationId = props.match.params.reservationId;
   const [reservation, setReservation] = useState(null);
