@@ -1,11 +1,12 @@
 import { GET_RESERVATIONS, GET_RESERVATION_SUGGESTED_SEATS } from '../types';
 import { setAlert } from './alert';
+const url = 'https://cinema-sheon.herokuapp.com';
 
 export const getReservations = () => async dispatch => {
   try {
     const token = localStorage.getItem('jwtToken');
-    const url = '/reservations';
-    const response = await fetch(url, {
+    const newUrl = url + '/reservations';
+    const response = await fetch(newUrl, {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${token}`
@@ -23,8 +24,8 @@ export const getReservations = () => async dispatch => {
 export const getSuggestedReservationSeats = username => async dispatch => {
   try {
     const token = localStorage.getItem('jwtToken');
-    const url = '/reservations/usermodeling/' + username;
-    const response = await fetch(url, {
+    const newUrl = url + '/reservations/usermodeling/' + username;
+    const response = await fetch(newUrl, {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${token}`
@@ -45,8 +46,8 @@ export const getSuggestedReservationSeats = username => async dispatch => {
 export const addReservation = reservation => async dispatch => {
   try {
     const token = localStorage.getItem('jwtToken');
-    const url = '/reservations';
-    const response = await fetch(url, {
+    const newUrl = url + '/reservations';
+    const response = await fetch(newUrl, {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${token}`,
@@ -75,8 +76,8 @@ export const addReservation = reservation => async dispatch => {
 export const updateReservation = (reservation, id) => async dispatch => {
   try {
     const token = localStorage.getItem('jwtToken');
-    const url = '/reservations/' + id;
-    const response = await fetch(url, {
+    const newUrl = url + '/reservations/' + id;
+    const response = await fetch(newUrl, {
       method: 'PATCH',
       headers: {
         Authorization: `Bearer ${token}`,
@@ -100,8 +101,8 @@ export const updateReservation = (reservation, id) => async dispatch => {
 export const removeReservation = id => async dispatch => {
   try {
     const token = localStorage.getItem('jwtToken');
-    const url = '/reservations/' + id;
-    const response = await fetch(url, {
+    const newUrl = url + '/reservations/' + id;
+    const response = await fetch(newUrl, {
       method: 'DELETE',
       headers: {
         Authorization: `Bearer ${token}`,

@@ -9,6 +9,7 @@ import {
 } from '../types';
 
 import { setAlert } from './alert';
+const url = 'https://cinema-sheon.herokuapp.com';
 
 export const toggleUserDialog = () => ({ type: TOGGLE_USER_DIALOG });
 
@@ -22,8 +23,8 @@ export const selectAllUsers = () => ({ type: SELECT_ALL_USERS });
 export const getUsers = () => async dispatch => {
   try {
     const token = localStorage.getItem('jwtToken');
-    const url = '/users';
-    const response = await fetch(url, {
+    const newUrl = url + '/users';
+    const response = await fetch(newUrl, {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${token}`
@@ -41,8 +42,8 @@ export const getUsers = () => async dispatch => {
 export const addUser = user => async dispatch => {
   try {
     const token = localStorage.getItem('jwtToken');
-    const url = '/users/';
-    const response = await fetch(url, {
+    const newUrl = url + '/users/';
+    const response = await fetch(newUrl, {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${token}`,
@@ -71,8 +72,8 @@ export const addUser = user => async dispatch => {
 export const updateUser = (user, id) => async dispatch => {
   try {
     const token = localStorage.getItem('jwtToken');
-    const url = '/users/' + id;
-    const response = await fetch(url, {
+    const newUrl = url+ '/users/' + id;
+    const response = await fetch(newUrl, {
       method: 'PATCH',
       headers: {
         Authorization: `Bearer ${token}`,
@@ -101,8 +102,8 @@ export const updateUser = (user, id) => async dispatch => {
 export const deleteUser = id => async dispatch => {
   try {
     const token = localStorage.getItem('jwtToken');
-    const url = '/users/' + id;
-    const response = await fetch(url, {
+    const newUrl = url + '/users/' + id;
+    const response = await fetch(newUrl, {
       method: 'DELETE',
       headers: {
         Authorization: `Bearer ${token}`,

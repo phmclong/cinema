@@ -12,7 +12,7 @@ export default function Footer() {
       </Typography>
       <Typography variant="caption">
         Crafted with love |{' '}
-        <Link href="https://www.facebook.com/code.name.long/" target="_blank" rel="noopener">
+        <Link href="https://sheon.hashnode.dev" target="_blank" rel="noopener">
           Sheon
         </Link>
       </Typography>

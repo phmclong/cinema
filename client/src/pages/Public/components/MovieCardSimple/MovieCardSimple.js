@@ -28,8 +28,7 @@ const useStyles = makeStyles(theme => ({
 const MovieCardSimple = props => {
   const classes = useStyles();
   const { movie } = props;
-  // console.log("(+) MovieCardSimple", movie.image);
-  
+
   var newImageUrl = regexPath(movie.image);
 
   return (

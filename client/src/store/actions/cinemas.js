@@ -1,12 +1,13 @@
 import { GET_CINEMAS, GET_CINEMA } from '../types';
 import { setAlert } from './alert';
+const url = 'https://cinema-sheon.herokuapp.com';
 
 export const uploadCinemaImage = (id, image) => async dispatch => {
   try {
     const data = new FormData();
     data.append('file', image);
-    const url = '/cinemas/photo/' + id;
-    const response = await fetch(url, {
+    const newUrl = url + '/cinemas/photo/' + id;
+    const response = await fetch(newUrl, {
       method: 'POST',
       body: data
     });
@@ -24,8 +25,8 @@ export const uploadCinemaImage = (id, image) => async dispatch => {
 
 export const getCinemas = () => async dispatch => {
   try {
-    const url = '/cinemas';
-    const response = await fetch(url, {
+    const newUrl = url + '/cinemas';
+    const response = await fetch(newUrl, {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' }
     });
@@ -40,8 +41,8 @@ export const getCinemas = () => async dispatch => {
 
 export const getCinema = id => async dispatch => {
   try {
-    const url = '/cinemas/' + id;
-    const response = await fetch(url, {
+    const newUrl = url + '/cinemas/' + id;
+    const response = await fetch(newUrl, {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' }
     });
@@ -57,8 +58,8 @@ export const getCinema = id => async dispatch => {
 export const createCinemas = (image, newCinema) => async dispatch => {
   try {
     const token = localStorage.getItem('jwtToken');
-    const url = '/cinemas';
-    const response = await fetch(url, {
+    const newUrl = url + '/cinemas';
+    const response = await fetch(newUrl, {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${token}`,
@@ -85,8 +86,8 @@ export const createCinemas = (image, newCinema) => async dispatch => {
 export const updateCinemas = (image, cinema, id) => async dispatch => {
   try {
     const token = localStorage.getItem('jwtToken');
-    const url = '/cinemas/' + id;
-    const response = await fetch(url, {
+    const newUrl = url + '/cinemas/' + id;
+    const response = await fetch(newUrl, {
       method: 'PATCH',
       headers: {
         Authorization: `Bearer ${token}`,
@@ -111,8 +112,8 @@ export const updateCinemas = (image, cinema, id) => async dispatch => {
 export const removeCinemas = id => async dispatch => {
   try {
     const token = localStorage.getItem('jwtToken');
-    const url = '/cinemas/' + id;
-    const response = await fetch(url, {
+    const newUrl =  url + '/cinemas/' + id;
+    const response = await fetch(newUrl, {
       method: 'DELETE',
       headers: {
         Authorization: `Bearer ${token}`,
@@ -134,8 +135,8 @@ export const removeCinemas = id => async dispatch => {
 
 export const getCinemasUserModeling = username => async dispatch => {
   try {
-    const url = '/cinemas/usermodeling/' + username;
-    const response = await fetch(url, {
+    const newUrl = url + '/cinemas/usermodeling/' + username;
+    const response = await fetch(newUrl, {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' }
     });

@@ -6,6 +6,7 @@ import {
   DELETE_SHOWTIME
 } from '../types';
 import { setAlert } from './alert';
+const url = 'https://cinema-sheon.herokuapp.com';
 
 export const toggleDialog = () => ({ type: TOGGLE_DIALOG });
 
@@ -19,8 +20,8 @@ export const selectAllShowtimes = () => ({ type: SELECT_ALL_SHOWTIMES });
 export const getShowtimes = () => async dispatch => {
   try {
     const token = localStorage.getItem('jwtToken');
-    const url = '/showtimes';
-    const response = await fetch(url, {
+    const newUrl = url + '/showtimes';
+    const response = await fetch(newUrl, {
       method: 'GET',
       headers: {
         Authorization: `Bearer ${token}`
@@ -38,8 +39,8 @@ export const getShowtimes = () => async dispatch => {
 export const addShowtime = showtime => async dispatch => {
   try {
     const token = localStorage.getItem('jwtToken');
-    const url = '/showtimes/';
-    const response = await fetch(url, {
+    const newUrl = url + '/showtimes/';
+    const response = await fetch(newUrl, {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${token}`,
@@ -63,8 +64,8 @@ export const addShowtime = showtime => async dispatch => {
 export const updateShowtime = (showtime, id) => async dispatch => {
   try {
     const token = localStorage.getItem('jwtToken');
-    const url = '/showtimes/' + id;
-    const response = await fetch(url, {
+    const newUrl = url + '/showtimes/' + id;
+    const response = await fetch(newUrl, {
       method: 'PATCH',
       headers: {
         Authorization: `Bearer ${token}`,
@@ -88,8 +89,8 @@ export const updateShowtime = (showtime, id) => async dispatch => {
 export const deleteShowtime = id => async dispatch => {
   try {
     const token = localStorage.getItem('jwtToken');
-    const url = '/showtimes/' + id;
-    const response = await fetch(url, {
+    const newUrl = url + '/showtimes/' + id;
+    const response = await fetch(newUrl, {
       method: 'DELETE',
       headers: {
         Authorization: `Bearer ${token}`,

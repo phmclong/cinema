@@ -4,14 +4,12 @@ import { withStyles, Typography } from '@material-ui/core';
 import styles from './styles';
 import { textTruncate } from '../../../../utils';
 import { Link } from 'react-router-dom';
+import regexPath from '../../../../utils/regexPath';
 
 const MovieCard = props => {
   const { classes, movie } = props;
-  console.log("(+) MovieCard", movie.image);
 
-  // function regexPath(string) {
-  //   return string.replace(/\\/g, '')
-  // }
+  var newImageUrl = regexPath(movie.image);
 
   return (
     <Link to={`movie/${movie._id}`} style={{ textDecoration: 'none' }}>
@@ -19,7 +17,7 @@ const MovieCard = props => {
         <header
           className={classes.header}
           style={{
-            backgroundImage: `url("1")`
+            backgroundImage: `url(${newImageUrl})`
           }}>
           <Typography className={classes.h4} variant="h4" color="inherit">
             {movie.genre}

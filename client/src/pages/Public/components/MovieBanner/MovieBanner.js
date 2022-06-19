@@ -30,10 +30,9 @@ function MovieBanner(props) {
   const { movie, fullDescription } = props;
   const classes = useStyles(props);
   if (!movie) return null;
-  // console.log("(+) MovieBanner", movie.image)
-  // console.log("1");
-  var newImageUrl = regexPath(movie.image);
 
+  var newImageUrl = regexPath(movie.image);
+ 
   return (
     <div className={classes.movieHero}>
       <div className={classes.infoSection}>
@@ -88,7 +87,6 @@ function MovieBanner(props) {
         className={classes.blurBackground}
         style={{
           backgroundImage: `url(${newImageUrl})`
-          // backgroundImage: `url("http://localhost:8080/uploads/movies/1655455001868-joker-2019-15702714739951087496844.jpg")`
         }}
       />
   

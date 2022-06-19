@@ -10,10 +10,10 @@ import {
   PortletContent,
   PortletFooter
 } from '../../../../../components';
-
 // Component styles
 import styles from './styles';
 
+const url = 'https://cinema-sheon.herokuapp.com';
 class Account extends Component {
   state = {
     name: '',
@@ -39,8 +39,8 @@ class Account extends Component {
       const token = localStorage.getItem('jwtToken');
       let body = { name, email, phone };
       if (password) body = { ...body, password };
-      const url = '/users/me';
-      const response = await fetch(url, {
+      const newUrl = url + '/users/me';
+      const response = await fetch(newUrl, {
         method: 'PATCH',
         headers: {
           Authorization: `Bearer ${token}`,
