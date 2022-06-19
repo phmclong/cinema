@@ -25,8 +25,8 @@ function Checkin(props) {
   const checkinReservations = async id => {
     try {
       const token = localStorage.getItem('jwtToken');
-      const url = '/reservations/checkin/' + id;
-      const response = await fetch(url, {
+      const newUrl =  url +  '/reservations/checkin/' + id;
+      const response = await fetch(newUrl, {
         method: 'GET',
         headers: {
           Authorization: `Bearer ${token}`

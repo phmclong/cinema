@@ -80,7 +80,9 @@ class ReservationsTable extends Component {
                   <TableRow
                     className={classes.tableRow}
                     hover
-                    key={reservation._id}>
+                    key={reservation._id}
+                    
+                  >
                     <TableCell className={classes.tableCell}>
                       {reservation.username}
                     </TableCell>

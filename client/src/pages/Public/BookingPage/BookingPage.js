@@ -34,6 +34,8 @@ import BookingInvitation from './components/BookingInvitation/BookingInvitation'
 
 import jsPDF from 'jspdf';
 
+const url = 'https://cinema-sheon.herokuapp.com';
+
 class BookingPage extends Component {
   didSetSuggestion = false;
 
@@ -288,8 +290,8 @@ class BookingPage extends Component {
     if (!invitations) return;
     try {
       const token = localStorage.getItem('jwtToken');
-      const url = '/invitations';
-      const response = await fetch(url, {
+      const newUrl = url + '/invitations';
+      const response = await fetch(newUrl, {
         method: 'POST',
         headers: {
           Authorization: `Bearer ${token}`,
