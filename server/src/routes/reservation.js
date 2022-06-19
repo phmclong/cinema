@@ -74,7 +74,16 @@ router.patch('/reservations/:id', auth.enhance, async (req, res) => {
 
   try {
     const reservation = await Reservation.findById(_id);
-    updates.forEach((update) => (reservation[update] = req.body[update]));
+    updates.forEach((update) => {
+      if (update == 'checkin') {
+        if(req.body[update] == "true") {
+          req.body[update] = true;
+        } else {
+          req.body[update] = false;
+        }
+      }
+      reservation[update] = req.body[update];
+    });
     await reservation.save();
     return !reservation ? res.sendStatus(404) : res.send(reservation);
   } catch (e) {

@@ -15,10 +15,18 @@ import { Portlet, PortletContent } from '../../../../../components';
 import styles from './styles';
 
 class ReservationsTable extends Component {
-  state = {
-    rowsPerPage: 10,
-    page: 0
-  };
+  // state = {
+  //   rowsPerPage: 10,
+  //   page: 0
+  // };
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      rowsPerPage: 10,
+      page: 0
+    };
+  }
 
   static propTypes = {
     className: PropTypes.string,
@@ -51,6 +59,11 @@ class ReservationsTable extends Component {
     return item ? item[attr] : `Not ${attr} Found`;
   };
 
+  openEditDialog = reservation => {
+    // this.setState({ openEditDialog: true, editCinema: cinema });
+    this.props.openEditDialog(reservation);
+  };
+
   render() {
     const { classes, className, reservations, movies, cinemas } = this.props;
     const { rowsPerPage, page } = this.state;
@@ -62,6 +75,7 @@ class ReservationsTable extends Component {
           <Table>
             <TableHead>
               <TableRow>
+                <TableCell align="left">ID</TableCell>
                 <TableCell align="left">User</TableCell>
                 <TableCell align="left">Phone</TableCell>
                 <TableCell align="left">Start At</TableCell>
@@ -81,8 +95,11 @@ class ReservationsTable extends Component {
                     className={classes.tableRow}
                     hover
                     key={reservation._id}
-                    
+                    onClick={() => this.openEditDialog(reservation)}
                   >
+                    <TableCell className={classes.tableCell}>
+                      {reservation._id}
+                    </TableCell>
                     <TableCell className={classes.tableCell}>
                       {reservation.username}
                     </TableCell>
